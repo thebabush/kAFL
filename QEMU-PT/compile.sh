@@ -15,6 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with QEMU-PT.  If not, see <http://www.gnu.org/licenses/>.
 
-./configure --target-list=x86_64-softmmu --enable-gtk --enable-pt  
+./configure --target-list=x86_64-softmmu --enable-gtk --enable-pt --extra-cflags="-std=gnu99" 
 make -j 8
 

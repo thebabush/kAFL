@@ -4,6 +4,10 @@ Blazing fast x86-64 VM kernel fuzzing framework with performant VM reloads for L
 
 Published at USENIX Security 2017.
 
+### In syzkaller/ucore project
+
+only qemu-pt is needed.
+
 ### Currently missing: 
 
 - full documentation
