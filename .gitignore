@@ -1,2 +1,4 @@
 qemu-*
+linux-*
 qemu.tar.gz
+kernel.tar.gz

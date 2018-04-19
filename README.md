@@ -6,7 +6,7 @@ Published at USENIX Security 2017.
 
 ### In syzkaller/ucore project
 
-only qemu-pt is needed.
+only qemu-pt/kvm-pt is needed.
 
 ### Currently missing: 
 
