@@ -29,7 +29,7 @@ along with QEMU-PT.  If not, see <http://www.gnu.org/licenses/>.
 
 #define PROGRAM_SIZE				(16  << 20)	/* 16MB Application Data */
 #define PAYLOAD_SIZE				(128 << 10)	/* 128KB Payload Data */
-#define INFO_SIZE					(128 << 10)	/* 128KB Info Data */
+#define INFO_SIZE					(16  << 20)	/* 128KB Info Data */
 
 #define INFO_FILE					"/tmp/kAFL_info.txt"
 

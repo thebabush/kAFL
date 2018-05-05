@@ -37,6 +37,7 @@ bool hypercall_enabled = false;
 void* payload_buffer = NULL;
 void* payload_buffer_guest = NULL;
 void* program_buffer = NULL;
+void* coverage_buffer = NULL;
 char info_buffer[INFO_SIZE];
 void* argv = NULL;
 
@@ -237,6 +238,10 @@ void pt_setup_payload(void* ptr){
 	payload_buffer = ptr;
 }
 
+void pt_setup_coverage(void* ptr){
+	coverage_buffer = ptr;
+}
+
 void pt_disable_wrapper(CPUState *cpu){
 	int ret = pt_disable(cpu, false);
 	//fin_det_filter();
@@ -348,12 +353,18 @@ void handle_hypercall_kafl_lock(struct kvm_run *run, CPUState *cpu){
 }
 
 void handle_hypercall_kafl_info(struct kvm_run *run, CPUState *cpu){
-	read_virtual_memory((uint64_t)run->hypercall.args[0], (uint8_t*)info_buffer, INFO_SIZE, cpu);
-	FILE* info_file_fd = fopen(INFO_FILE, "w");
-	fprintf(info_file_fd, "%s\n", info_buffer);
-	fclose(info_file_fd);
+	// read_virtual_memory((uint64_t)run->hypercall.args[0], (uint8_t*)info_buffer, INFO_SIZE, cpu);
+	if(hypercall_enabled){
+		if(coverage_buffer){
+			read_virtual_memory((uint64_t)run->hypercall.args[0], (uint8_t*)coverage_buffer, INFO_SIZE, cpu);
+			//printf("Done!\n");
+		}
+	}
+	// FILE* info_file_fd = fopen(INFO_FILE, "w");
+	// fprintf(info_file_fd, "%s\n", info_buffer);
+	// fclose(info_file_fd);
 	if(hypercall_enabled){
 		hypercall_snd_char(KAFL_PROTO_INFO);
 	}
-	qemu_system_shutdown_request();
+	// qemu_system_shutdown_request();
 }

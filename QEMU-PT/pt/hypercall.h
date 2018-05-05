@@ -50,6 +50,7 @@ along with QEMU-PT.  If not, see <http://www.gnu.org/licenses/>.
 
 void pt_setup_program(void* ptr);
 void pt_setup_payload(void* ptr);
+void pt_setup_coverage(void* ptr);
 void pt_setup_snd_handler(void (*tmp)(char, void*), void* tmp_s);
 void pt_setup_ip_filters(uint8_t filter_id, uint64_t start, uint64_t end, void* filter_bitmap, void* tfilter_bitmap);
 void pt_setup_enable_hypercalls(void);
