@@ -16,8 +16,8 @@
 # along with QEMU-PT.  If not, see <http://www.gnu.org/licenses/>.
 356a357,362
 > /* vmx_pt */
-> struct vmx_pt_filter_iprs {
-> 	__u64 a;
-> 	__u64 b;
-> };
+> // struct vmx_pt_filter_iprs {
+> //	__u64 a;
+> //	__u64 b;
+> // };
 > 

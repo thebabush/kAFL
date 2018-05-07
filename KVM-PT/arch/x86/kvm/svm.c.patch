@@ -16,18 +16,18 @@
 # along with QEMU-PT.  If not, see <http://www.gnu.org/licenses/>.
 4309a4310,4319
 > #ifdef CONFIG_KVM_VMX_PT
-> static int setup_trace_fd_stub(struct kvm_vcpu *vcpu){
-> 	return -EINVAL;
-> }
-> static int vmx_pt_is_enabled(void){
-> 	/* AMD CPUs do not support Intel PT */
-> 	return -EINVAL;
-> }
+> // static int setup_trace_fd_stub(struct kvm_vcpu *vcpu){
+> //	return -EINVAL;
+> // }
+> // static int vmx_pt_is_enabled(void){
+> //	/* AMD CPUs do not support Intel PT */
+> //	return -EINVAL;
+> // }
 > #endif	
 > 
 4417a4428,4432
 > 	
 > #ifdef CONFIG_KVM_VMX_PT
-> 	.setup_trace_fd = setup_trace_fd_stub,
-> 	.vmx_pt_enabled = vmx_pt_is_enabled,
+> //	.setup_trace_fd = setup_trace_fd_stub,
+> //	.vmx_pt_enabled = vmx_pt_is_enabled,
 > #endif	

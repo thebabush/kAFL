@@ -6,18 +6,8 @@ echo "[*] Unpacking Kernel $LINUX_VERSION ..."
 tar xf kernel.tar.gz
 
 echo "[*] Patching Kernel $LINUX_VERSION ..."
-patch linux-$LINUX_VERSION/arch/x86/kvm/Makefile < KVM-PT/arch/x86/kvm/Makefile.patch > /dev/null
-patch linux-$LINUX_VERSION/arch/x86/kvm/Kconfig < KVM-PT/arch/x86/kvm/Kconfig.patch > /dev/null
-patch linux-$LINUX_VERSION/arch/x86/kvm/vmx.c < KVM-PT/arch/x86/kvm/vmx.c.patch > /dev/null
-patch linux-$LINUX_VERSION/arch/x86/kvm/svm.c < KVM-PT/arch/x86/kvm/svm.c.patch > /dev/null
 patch linux-$LINUX_VERSION/arch/x86/kvm/x86.c < KVM-PT/arch/x86/kvm/x86.c.patch > /dev/null
-patch linux-$LINUX_VERSION/arch/x86/include/asm/kvm_host.h < KVM-PT/arch/x86/include/asm/kvm_host.h.patch > /dev/null
-patch linux-$LINUX_VERSION/arch/x86/include/uapi/asm/kvm.h < KVM-PT/arch/x86/include/uapi/asm/kvm.h.patch > /dev/null
 patch linux-$LINUX_VERSION/include/uapi/linux/kvm.h <  KVM-PT/include/uapi/linux/kvm.h.patch > /dev/null
-
-cp KVM-PT/arch/x86/kvm/vmx.h linux-$LINUX_VERSION/arch/x86/kvm/
-cp KVM-PT/arch/x86/kvm/vmx_pt.h linux-$LINUX_VERSION/arch/x86/kvm/
-cp KVM-PT/arch/x86/kvm/vmx_pt.c linux-$LINUX_VERSION/arch/x86/kvm/
 
 mkdir linux-$LINUX_VERSION/usermode_test/ 2> /dev/null
 cp KVM-PT/usermode_test/support_test.c linux-$LINUX_VERSION/usermode_test/

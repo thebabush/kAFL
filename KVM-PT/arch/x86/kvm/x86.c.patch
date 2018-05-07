@@ -16,17 +16,17 @@
 # along with QEMU-PT.  If not, see <http://www.gnu.org/licenses/>.
 2689a2690,2695
 > #ifdef CONFIG_KVM_VMX_PT
-> 	case KVM_VMX_PT_SUPPORTED: {
-> 		r = kvm_x86_ops->vmx_pt_enabled();
-> 		break;
-> 	}
+> 	// case KVM_VMX_PT_SUPPORTED: {
+> 	//	r = kvm_x86_ops->vmx_pt_enabled();
+> 	//	break;
+> 	// }
 > #endif
 3498a3505,3510
 > #ifdef CONFIG_KVM_VMX_PT
-> 	case KVM_VMX_PT_SETUP_FD: {
-> 		r = kvm_x86_ops->setup_trace_fd(vcpu);
-> 		break;
-> 	}
+> 	// case KVM_VMX_PT_SETUP_FD: {
+> 	//	r = kvm_x86_ops->setup_trace_fd(vcpu);
+> 	//	break;
+> 	// }
 > #endif
 5970a5983,6003
 > #ifdef CONFIG_KVM_VMX_PT

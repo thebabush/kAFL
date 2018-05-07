@@ -17,6 +17,6 @@
 994a995,999
 > 			
 > #ifdef CONFIG_KVM_VMX_PT
-> 	int (*setup_trace_fd)(struct kvm_vcpu *vcpu);
-> 	int (*vmx_pt_enabled)(void);
+> 	// int (*setup_trace_fd)(struct kvm_vcpu *vcpu);
+> 	// int (*vmx_pt_enabled)(void);
 > #endif	

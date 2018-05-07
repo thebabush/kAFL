@@ -731,12 +731,14 @@ void vmx_pt_destroy(struct vcpu_vmx *vmx, struct vcpu_vmx_pt **vmx_pt_config){
 	vmx_pt_dump_trace_data(*vmx_pt_config);
 #endif
 
-	free_pages((u64)(*vmx_pt_config)->topa_main_buf_virt_addr, TOPA_MAIN_ORDER);
-	free_pages((u64)(*vmx_pt_config)->topa_fallback_buf_virt_addr, TOPA_FALLBACK_ORDER);
-	free_page((u64)(*vmx_pt_config)->topa_virt_addr);
+	if (*vmx_pt_config) {
+		free_pages((u64)(*vmx_pt_config)->topa_main_buf_virt_addr, TOPA_MAIN_ORDER);
+		free_pages((u64)(*vmx_pt_config)->topa_fallback_buf_virt_addr, TOPA_FALLBACK_ORDER);
+		free_page((u64)(*vmx_pt_config)->topa_virt_addr);
 
-	kfree(*vmx_pt_config);
-	*vmx_pt_config = NULL;
+		kfree(*vmx_pt_config);
+		*vmx_pt_config = NULL;
+	}
 #ifdef DEBUG
 	PRINT_INFO("Struct freed...");
 #endif
