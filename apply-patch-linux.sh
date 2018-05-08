@@ -8,6 +8,7 @@ tar xf kernel.tar.gz
 echo "[*] Patching Kernel $LINUX_VERSION ..."
 patch linux-$LINUX_VERSION/arch/x86/kvm/x86.c < KVM-PT/arch/x86/kvm/x86.c.patch > /dev/null
 patch linux-$LINUX_VERSION/include/uapi/linux/kvm.h <  KVM-PT/include/uapi/linux/kvm.h.patch > /dev/null
+patch linux-$LINUX_VERSION/arch/x86/kvm/Kconfig < KVM-PT/arch/x86/kvm/Kconfig.patch > /dev/null
 
 mkdir linux-$LINUX_VERSION/usermode_test/ 2> /dev/null
 cp KVM-PT/usermode_test/support_test.c linux-$LINUX_VERSION/usermode_test/
