@@ -202,7 +202,7 @@ static void pci_kafl_guest_realize(PCIDevice *dev, Error **errp){
 	if (s->data_bar_fd_1 != NULL)
 		kafl_guest_create_memory_bar(s, 2, PAYLOAD_SIZE, s->data_bar_fd_1, errp);
 	if (s->data_bar_fd_2 != NULL)
-		kafl_guest_create_memory_bar(s, 3, PAYLOAD_SIZE, s->data_bar_fd_2, errp);
+		kafl_guest_create_memory_bar(s, 3, INFO_SIZE, s->data_bar_fd_2, errp);
 		
 	
 	if(&s->chr)
