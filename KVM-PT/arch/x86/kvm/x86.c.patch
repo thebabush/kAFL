@@ -50,7 +50,7 @@
 > 	}
 > #endif
 > 
-5971a6005,6061
+5971a6005,6069
 > 		/* kAFL Hypercall interface */
 > 		#ifdef CONFIG_KVM_VMX_PT
 > 		if (kvm_register_read(vcpu, VCPU_REGS_RAX) == HYPERCALL_KAFL_RAX_ID){
@@ -98,6 +98,14 @@
 > 					break;
 > 				case 13: /* KAFL_GUEST_DEBUG */
 > 					vcpu->run->exit_reason = KVM_EXIT_KAFL_DEBUG;
+> 					vcpu->run->hypercall.args[0] = kvm_register_read(vcpu, VCPU_REGS_RCX);
+> 					break;
+> 				case 14:  /* KAFL_GUEST_GET_INPIPE */
+> 					vcpu->run->exit_reason = KVM_EXIT_KAFL_GET_INPIPE;
+> 					vcpu->run->hypercall.args[0] = kvm_register_read(vcpu, VCPU_REGS_RCX);
+> 					break;
+> 				case 15:  /* KAFL_GUEST_GET_OUTPIPE */
+> 					vcpu->run->exit_reason = KVM_EXIT_KAFL_GET_OUTPIPE;
 > 					vcpu->run->hypercall.args[0] = kvm_register_read(vcpu, VCPU_REGS_RCX);
 > 					break;
 > 				default:

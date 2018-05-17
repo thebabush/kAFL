@@ -31,7 +31,7 @@
 > #define KVM_EXIT_KAFL_NEXT_PAYLOAD	112
 > #define KVM_EXIT_KAFL_DEBUG			113
 > 
-1313a1330,1359
+1313a1330,1361
 > 
 > /*
 >  * ioctls for vmx_pt fds
@@ -62,3 +62,5 @@
 > #define KVM_VMX_PT_DISABLE_CR3			_IO(KVMIO,	0xe3)			/* disable CR3 filtering */
 > 
 > #define KVM_VMX_PT_SUPPORTED				_IO(KVMIO,	0xe4)
+> #define KVM_EXIT_KAFL_GET_INPIPE		114
+> #define KVM_EXIT_KAFL_GET_OUTPIPE		115
