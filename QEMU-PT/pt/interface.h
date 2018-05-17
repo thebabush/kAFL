@@ -30,6 +30,8 @@ along with QEMU-PT.  If not, see <http://www.gnu.org/licenses/>.
 #define PROGRAM_SIZE				(16  << 20)	/* 16MB Application Data */
 #define PAYLOAD_SIZE				(128 << 10)	/* 128KB Payload Data */
 #define INFO_SIZE					(16  << 20)	/* 128KB Info Data */
+#define INPIPE_SIZE					(128 << 10)	/* 128KB in pipe buffer */
+#define OUTPIPE_SIZE				(128 << 10)	/* 128KB out pipe buffer */
 
 #define INFO_FILE					"/tmp/kAFL_info.txt"
 

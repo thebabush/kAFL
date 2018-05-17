@@ -64,6 +64,8 @@ typedef struct kafl_mem_state {
 	char* data_bar_fd_0;
 	char* data_bar_fd_1;
 	char* data_bar_fd_2;
+	char* data_bar_fd_3;
+	char* data_bar_fd_4;
 	char* bitmap_file;
 
 	char* filter_bitmap[4];
@@ -148,6 +150,10 @@ static int kafl_guest_create_memory_bar(kafl_mem_state *s, int region_num, uint6
 				break;
 		case 3:	pt_setup_coverage((void*)ptr);
 				break;
+		case 4:	pt_setup_inpipe((void*)ptr);
+				break;
+		case 5:	pt_setup_outpipe((void*)ptr);
+				break;
 	}
 
 	pt_setup_snd_handler(&send_char, s);
@@ -203,6 +209,10 @@ static void pci_kafl_guest_realize(PCIDevice *dev, Error **errp){
 		kafl_guest_create_memory_bar(s, 2, PAYLOAD_SIZE, s->data_bar_fd_1, errp);
 	if (s->data_bar_fd_2 != NULL)
 		kafl_guest_create_memory_bar(s, 3, INFO_SIZE, s->data_bar_fd_2, errp);
+	if (s->data_bar_fd_3 != NULL)
+		kafl_guest_create_memory_bar(s, 4, INPIPE_SIZE, s->data_bar_fd_3, errp);
+	if (s->data_bar_fd_4 != NULL)
+		kafl_guest_create_memory_bar(s, 5, OUTPIPE_SIZE, s->data_bar_fd_4, errp);
 		
 	
 	if(&s->chr)
@@ -235,6 +245,8 @@ static Property kafl_guest_properties[] = {
 	DEFINE_PROP_STRING("shm0", kafl_mem_state, data_bar_fd_0),
 	DEFINE_PROP_STRING("shm1", kafl_mem_state, data_bar_fd_1),
 	DEFINE_PROP_STRING("shm2", kafl_mem_state, data_bar_fd_2),
+	DEFINE_PROP_STRING("inpipe", kafl_mem_state, data_bar_fd_3),
+	DEFINE_PROP_STRING("outpipe", kafl_mem_state, data_bar_fd_4),
 	DEFINE_PROP_STRING("bitmap", kafl_mem_state, bitmap_file),
 	DEFINE_PROP_STRING("filter0", kafl_mem_state, filter_bitmap[0]),
 	DEFINE_PROP_STRING("filter1", kafl_mem_state, filter_bitmap[1]),

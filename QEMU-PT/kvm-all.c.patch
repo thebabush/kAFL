@@ -70,12 +70,12 @@
 >             handle_hypercall_kafl_cr3(run, cpu);
 >             ret = 0;
 >             break;
->         case KVM_EXIT_KAFL_SUBMIT_PANIC:
->             handle_hypercall_kafl_submit_panic(run, cpu);
+>         case KVM_EXIT_KAFL_GET_INPIPE:
+>             handle_hypercall_kafl_get_inpipe(run, cpu);
 >             ret = 0;
 >             break;
->         case KVM_EXIT_KAFL_SUBMIT_KASAN:
->             handle_hypercall_kafl_submit_kasan(run, cpu);
+>         case KVM_EXIT_KAFL_GET_OUTPIPE:
+>             handle_hypercall_kafl_get_outpipe(run, cpu);
 >             ret = 0;
 >             break;
 >         case KVM_EXIT_KAFL_PANIC:

@@ -85,6 +85,8 @@ void handle_hypercall_kafl_panic(struct kvm_run *run, CPUState *cpu);
 void handle_hypercall_kafl_kasan(struct kvm_run *run, CPUState *cpu);
 void handle_hypercall_kafl_lock(struct kvm_run *run, CPUState *cpu);
 void handle_hypercall_kafl_info(struct kvm_run *run, CPUState *cpu);
+void handle_hypercall_kafl_get_inpipe(struct kvm_run *run, CPUState *cpu);
+void handle_hypercall_kafl_get_outpipe(struct kvm_run *run, CPUState *cpu);
 
 #ifdef KAFL_NEXT_PAYLOAD
 void handle_hypercall_kafl_next_payload(struct kvm_run *run, CPUState *cpu);
