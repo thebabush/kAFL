@@ -381,9 +381,9 @@ void handle_hypercall_kafl_info(struct kvm_run *run, CPUState *cpu){
 
 void handle_hypercall_kafl_get_inpipe(struct kvm_run *run, CPUState *cpu) {
 	if(hypercall_enabled){
-		if(payload_buffer){
-			payload_buffer_guest = (void*)run->hypercall.args[0];
-			write_virtual_memory((uint64_t)payload_buffer_guest, inpipe_buffer, INPIPE_SIZE, cpu);
+		if(inpipe_buffer){
+			inpipe_buffer_guest = (void*)run->hypercall.args[0];
+			write_virtual_memory((uint64_t)inpipe_buffer_guest, inpipe_buffer, INPIPE_SIZE, cpu);
 		}
 	}
 }
@@ -391,7 +391,7 @@ void handle_hypercall_kafl_get_inpipe(struct kvm_run *run, CPUState *cpu) {
 void handle_hypercall_kafl_get_outpipe(struct kvm_run *run, CPUState *cpu) {
 	// read_virtual_memory((uint64_t)run->hypercall.args[0], (uint8_t*)info_buffer, INFO_SIZE, cpu);
 	if(hypercall_enabled){
-		if(coverage_buffer){
+		if(outpipe_buffer){
 			read_virtual_memory((uint64_t)run->hypercall.args[0], (uint8_t*)outpipe_buffer, OUTPIPE_SIZE, cpu);
 			//printf("Done!\n");
 		}
