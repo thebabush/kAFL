@@ -36,6 +36,7 @@ along with QEMU-PT.  If not, see <http://www.gnu.org/licenses/>.
 bool hypercall_enabled = false;
 void* payload_buffer = NULL;
 void* payload_buffer_guest = NULL;
+void* inpipe_buffer_guest = NULL;
 void* program_buffer = NULL;
 void* coverage_buffer = NULL;
 void* inpipe_buffer = NULL;
